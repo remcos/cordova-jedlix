@@ -22,3 +22,4 @@
         </config-file>
         <source-file src="src/android/JedlixPlugin.java" target-dir="src/com/remco/cordova/plugin" />
     </platform>
+</plugin>

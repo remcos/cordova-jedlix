@@ -1,41 +1,43 @@
 package com.remco.cordova.plugin;
-// The native Toast API
-import android.widget.Toast;
+
 // Cordova-required packages
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.PluginResult;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-public class ToastyPlugin extends CordovaPlugin {
-  private static final String DURATION_LONG = "long";
-  @Override
-  public boolean execute(String action, JSONArray args,
-    final CallbackContext callbackContext) {
-      // Verify that the user sent a 'show' action
-      if (!action.equals("show")) {
-        callbackContext.error("\"" + action + "\" is not a recognized action.");
-        return false;
-      }
-      String message;
-      String duration;
-      try {
-        JSONObject options = args.getJSONObject(0);
-        message = options.getString("message");
-        duration = options.getString("duration");
-      } catch (JSONException e) {
-        callbackContext.error("Error encountered: " + e.getMessage());
-        return false;
-      }
-      // Create the toast
-      Toast toast = Toast.makeText(cordova.getActivity(), message,
-        DURATION_LONG.equals(duration) ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT);
-      // Display toast
-      toast.show();
-      // Send a positive result to the callbackContext
-      PluginResult pluginResult = new PluginResult(PluginResult.Status.OK);
-      callbackContext.sendPluginResult(pluginResult);
-      return true;
-  }
+
+// Jedlix-required packages
+import com.jedlix.sdk.JedlixSDK;
+import com.jedlix.sdk.example.authentication.Auth0Authentication;
+import com.jedlix.sdk.example.authentication.Authentication;
+import com.jedlix.sdk.example.authentication.DefaultAuthentication;
+import java.net.URL;
+
+public class JedlixPlugin extends CordovaPlugin {
+    
+    @Override
+    public boolean execute(String action, JSONArray args,
+      final CallbackContext callbackContext) {
+        // Verify that the user sent a 'connect' action
+        if (!action.equals("connect")) {
+          callbackContext.error("\"" + action + "\" is not a recognized action.");
+          return false;
+        }
+
+        /* Custom code */
+        var baseURL = "https://demo-smartcharging.jedlix.com";
+        var apiKey = "";
+        var authentication = {};
+        
+        JedlixSDK.configure(
+            baseURL,
+            apiKey,
+            authentication
+        );
+
+        /* End of custom code */
+
+        PluginResult pluginResult = new PluginResult(PluginResult.Status.OK);
+        callbackContext.sendPluginResult(pluginResult);
+        return true;
+    }
 }
