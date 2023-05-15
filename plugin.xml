@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova-plugin-jedlixplugin" version="0.0.1">
+    <name>JedlixPlugin</name>
+    <description>An Android Cordova plugin that connects Jedlix.</description>
+    <license>MIT</license>
+    <keywords>cordova,android</keywords>
+    <repo>https://github.com/remcos/cordova-jedlix/Jedlix-Cordova-Plugin.git</repo>
+    <issue>https://github.com/remcos/cordova-jedlix/issues</issue>
+    <engines>
+        <engine name="cordova" version=">=3.0.0"/>
+    </engines>
+    <js-module src="www/jedlixplugin.js" name="jedlixPlugin">
+        <clobbers target="window.plugins.jedlixPlugin" />
+    </js-module>
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="JedlixPlugin">
+                <param name="android-package" value="com.remco.cordova.plugin.JedlixPlugin"/>
+            </feature>
+        </config-file>
+        <source-file src="src/android/JedlixPlugin.java" target-dir="src/com/remco/cordova/plugin" />
+    </platform>

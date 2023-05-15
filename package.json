@@ -1,0 +1,32 @@
+{
+    "name": "cordova-plugin-jedlixplugin",
+    "version": "0.0.1",
+    "description": "An Android Cordova plugin that connects Jedlix.",
+    "cordova": {
+      "id": "cordova-plugin-jedlixplugin",
+      "platforms": [
+        "android"
+      ]
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/remcos/cordova-jedlix.git"
+    },
+    "keywords": [
+      "Jedlix",
+      "ecosystem:cordova",
+      "cordova-android"
+    ],
+    "engines": [
+      {
+        "name": "cordova",
+        "version": ">=3.0.0"
+      }
+    ],
+    "author": "Remco Snijders <snijders.remco@gmail.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/remcos/cordova-jedlix/issues"
+  },
+  "homepage": "https://github.com/remcos/cordova-jedlix/"
+}
